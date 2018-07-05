@@ -1,0 +1,34 @@
+{
+  "name": "api-checkout",
+  "version": "1.0.0",
+  "description": "Api de CulqiJS",
+  "author": "HR",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "nuxt": "^1.0.0",
+    "vue-axios": "^2.1.1",
+    "vue-spinner-component": "^1.0.5",
+    "vue-the-mask": "^0.11.1",
+    "vuetify": "^1.0.17"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.15.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-vue": "^4.0.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2"
+  }
+}

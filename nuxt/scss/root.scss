@@ -1,0 +1,18 @@
+// @import 'vuetify/dist/vuetify.min.css';
+
+
+@import 'plugins/vuetify.scss';
+@import 'util/material_color.scss';
+@import 'util/material_resources.scss';
+@import 'util/material_components.scss';
+@import 'util/material_icons.scss';
+@import 'pages/demo.scss';
+@import 'pages/api/checkout.scss';
+@import 'vuetify/dist/vuetify.min.css';
+
+body{
+	margin: 0;
+}
+html{
+	overflow-y: hidden;
+}

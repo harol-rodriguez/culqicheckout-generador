@@ -1,0 +1,911 @@
+* {
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica, helvetica neue, Ubuntu, segoe ui, arial, sans-serif
+}
+
+* button:focus {
+  outline: 0
+}
+
+.clq {
+  display: flex;
+  height: 100%;
+  /* align-items: center; */
+  overflow: auto;
+}
+.clq-checkout_container {
+  background-color: #F5F5F5;
+  width: 300px;
+  border: none;
+  border-radius: 6px;
+  margin: 10px auto;
+  position: relative;  
+  /* overflow: hidden;
+  min-height: 451px; */
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to{
+  opacity: 0;
+}
+.expand-transition {
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  overflow: hidden
+}
+
+.expand-enter,
+.expand-leave {
+  height: 0;
+  padding: 0 10px;
+  opacity: 0
+}
+
+.clq-checkout_container .maskpage {
+  background-color: rgba(0, 0, 0, 0.64);
+  border-radius: 6px;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 300;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center
+}
+
+.clq-checkout_container .maskpage .spinner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: url(https://culqi.com/images/logo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-y: 2px;
+  -webkit-animation: rotate-object 1.3s infinite linear; 
+  animation: rotate-object 1.3s infinite linear;  
+}
+
+  @-webkit-keyframes rotate-object {
+    0%  { -webkit-transform: perspective(120px)  }
+    50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+    100% { -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
+    }
+  }
+
+  @keyframes rotate-object {
+    0% {
+      transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+      -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+    }
+    50% {
+      transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+      -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+    }
+    100% {
+      transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+      -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    }
+  }
+
+.clq-checkout_container .maskpage .response_container #feedback {
+  position: relative
+}
+
+.clq-checkout_container .maskpage .response_container #feedback p {
+  margin: 0 10px;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  font-size: 18pt
+}
+
+.clq-checkout_container .maskpage .response_container .response {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-image: none;
+  margin: auto;
+  margin-bottom: 10px;
+  cursor: unset
+}
+
+.clq-checkout_container .maskpage .response_container .response__success {
+  cursor: pointer;
+  background-image: url(img/success.svg)
+}
+
+.clq-checkout_container .maskpage .response_container .response__success:hover {
+  -webkit-transition: all .1s linear;
+  transition: all .1s linear;
+  background-image: url(img/previous.svg);
+  background-size: contain
+}
+
+.clq-checkout_container .maskpage .response_container .response__error {
+  cursor: pointer;
+  background-image: url(img/error.svg)
+}
+
+.clq-checkout_container .maskpage .response_container .response__error:hover {
+  -webkit-transition: all .1s linear;
+  transition: all .1s linear;
+  background-image: url(img/previous.svg);
+  background-size: contain
+}
+
+.clq-checkout_container .maskpage .response_container .response__onlyInputs {
+  width: 60px;
+  height: 60px
+}
+
+.clq-checkout_container .productDetail {
+  position: relative;
+  width: 90%;
+  margin: auto;
+  padding: 15px 5% 15px 5%;
+  display: -webkit-box;
+  overflow: visible;
+  background: #F9F9F9;
+  border-bottom: 1px solid rgba(151, 151, 151, 0.4);
+  border-radius: 6px 6px 0 0;
+}
+
+.clq-checkout_container .productDetail .tittle{
+  font: 14px/1 'Source Sans Pro', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 23px;
+}
+
+.clq-checkout_container .productDetail .description{
+  font: 14px/1.2 'Source Sans Pro', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  max-height: 40px;
+  font-size: 11px;
+}
+
+.clq-checkout_container .productDetail__logo {
+  height: 85px;
+  width: 85px;
+  background-size: cover;
+  background-repeat: no-repeat
+}
+
+.clq-checkout_container .productDetail__settings {
+  margin-left: 10px;
+  width: calc(100% - 93px);
+  display: flex;
+  flex-flow: column;
+}
+
+.clq-checkout_container .productDetail__settings p {
+  margin: 6px 0;
+  color: #4a4a4a
+}
+
+.clq-checkout_container .productDetail__settings .tittle {
+  /* font-size: 19pt; */
+  font-weight: 600;
+  margin-top: auto;
+}
+
+.clq-checkout_container .productDetail__settings .description {
+  font-size: 10px;
+  font-weight: 400;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.clq-checkout_container #culqi-checkout-form {
+  position: relative;
+  width: 90%;
+  padding: 5%;
+  font-size: 0;
+  outline: 0;
+  min-height: 205px;
+  height: calc(100% - 166px);
+}
+
+.clq-checkout_container #culqi-checkout-form .textBox {
+  background-color: #fff;
+  width: 100%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  position: relative;
+  outline: 0;
+  -webkit-box-shadow: 0 0 1px #616161;
+  box-shadow: 0 0 1px #616161;
+  margin: auto;
+  align-items: center;
+}
+.clq-checkout_container #culqi-checkout-form .textBox:before {
+  margin-left: 7px;
+}
+
+.clq-checkout_container #culqi-checkout-form .textBox input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  padding: 14px 20px 13px 5px;
+  border: none;
+  overflow: visible;
+  background-color: transparent;
+  outline: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #4a4a4a;
+  font: 14px/1.4 Source Sans Pro, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Arial, sans-serif
+}
+
+.clq-checkout_container #culqi-checkout-form .textBox input::-webkit-input-placeholder {
+  color: hsla(0, 0%, 59%, .7)
+}
+
+.clq-checkout_container #culqi-checkout-form .textBox input:-ms-input-placeholder,
+.clq-checkout_container #culqi-checkout-form .textBox input::-ms-input-placeholder {
+  color: hsla(0, 0%, 59%, .7)
+}
+
+.clq-checkout_container #culqi-checkout-form .textBox input::placeholder {
+  color: hsla(0, 0%, 59%, .7)
+}
+
+.clq-checkout_container #culqi-checkout-form .textBox:focus-within {
+  -webkit-box-shadow: 0 0 6px #26de54 !important;
+  box-shadow: 0 0 6px #26de54 !important;
+  z-index: 4
+}
+
+.clq-checkout_container #culqi-checkout-form .textBox .tooltip {
+  font: 8pt/1.4 Source Sans Pro, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Arial, sans-serif;
+  display: block;
+  position: absolute;
+  background: #3a3a3a;
+  color: #fff;
+  padding: 5px;
+  top: 10px;
+  left: 5px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 0 3px #4a4a4a;
+  box-shadow: 0 0 3px #4a4a4a;
+  z-index: 2000;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  outline: 0;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity .2s ease-in;
+  -moz-transition: opacity .2s ease-in;
+  -o-transition: opacity .2s ease-in
+}
+
+.clq-checkout_container #culqi-checkout-form .textBox .tooltip-img {
+  background: url(img/tarjetaExplicativo.png);
+  height: 171px;
+  background-repeat: no-repeat;
+  background-position-x: center
+}
+
+.clq-checkout_container #culqi-checkout-form .textBox .tooltip .amex {
+  background: url(img/tarjetaExplicativoAmex.png)
+}
+
+.clq-checkout_container #culqi-checkout-form .invalid {
+  background: #FFF url(img/invalid.svg);
+  background-repeat: no-repeat;
+  background-position-x: calc(100% - 10px);
+  background-position-y: 15px;
+  background-size: 17px;
+}
+
+.clq-checkout_container #culqi-checkout-form .valid {
+  border: none !important;
+  background: #FFF url(img/valid.svg);
+  background-repeat: no-repeat;
+  background-position-x: calc(100% - 10px);
+  background-position-y: 15px;
+  background-size: 17px
+}
+
+.clq-checkout_container #culqi-checkout-form #card-number {
+  border-radius: 3px 3px 0 0;
+  background-position-x: calc(100% - 50px)
+}
+
+.clq-checkout_container #culqi-checkout-form #card-number:focus-within .tooltip {
+  opacity: 1;
+  visibility: visible
+}
+
+.clq-checkout_container #culqi-checkout-form #card-number:before {
+  /* font-family: Material Icons !important;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  color: #989898;
+  position: relative;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 5px;
+  content: "credit_card" */
+  content: url(img/card.png)
+}
+
+.clq-checkout_container #culqi-checkout-form #card-number input {
+  background-image: none;
+  background-repeat: no-repeat;
+  background-position-x: calc(100% - 10px);
+  background-position-y: 10px;
+  background-size: 30px
+}
+
+.clq-checkout_container #culqi-checkout-form #card-number .visa {
+  word-spacing: 7px;
+  background-image: url(img/visa.svg)
+}
+
+.clq-checkout_container #culqi-checkout-form #card-number .mastercard {
+  word-spacing: 8px;
+  background-image: url(img/mastercard.svg)
+}
+
+.clq-checkout_container #culqi-checkout-form #card-number .maestro {
+  word-spacing: 8px;
+  background-image: url(img/maestro.svg)
+}
+
+.clq-checkout_container #culqi-checkout-form #card-number .amex {
+  word-spacing: 8px;
+  background-image: url(img/amex.svg)
+}
+
+.clq-checkout_container #culqi-checkout-form #card-number .diners {
+  word-spacing: 8px;
+  background-image: url(img/diners.svg)
+}
+
+.clq-checkout_container #culqi-checkout-form #card-number .discover {
+  word-spacing: 8px;
+  background-image: url(img/discover.svg)
+}
+
+.clq-checkout_container #culqi-checkout-form #card-number .jcb {
+  word-spacing: 8px;
+  background-image: url(img/jcb.svg)
+}
+
+.clq-checkout_container #culqi-checkout-form #card-number .unionpay {
+  word-spacing: 8px;
+  background-image: url(img/unionpay.svg)
+}
+
+.clq-checkout_container #culqi-checkout-form #card-cvv,
+.clq-checkout_container #culqi-checkout-form #card-expiry {
+  width: 50%;
+  margin: 0;
+  border-radius: 0
+}
+
+.clq-checkout_container #culqi-checkout-form #card-expiry {
+  border-radius: 0 0 0 3px
+}
+
+.clq-checkout_container #culqi-checkout-form #card-expiry:focus-within .tooltip {
+  opacity: 1;
+  visibility: visible
+}
+
+.clq-checkout_container #culqi-checkout-form #card-expiry:before {
+  /* font-family: Material Icons !important;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  color: #989898;
+  position: relative;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 5px;
+  content: "date_range"*/  
+  content: url(img/fecha.png)
+} 
+
+.clq-checkout_container #culqi-checkout-form #card-cvv {
+  border-radius: 0 0 3px 0
+}
+
+.clq-checkout_container #culqi-checkout-form #card-number .tooltip {
+  left: 100%;
+}
+.clq-checkout_container #culqi-checkout-form #card-expiry .tooltip {
+  left: -177px;
+  text-align: right;
+}
+.clq-checkout_container #culqi-checkout-form #user-email .tooltip {
+  left: 100%;
+}
+.clq-checkout_container #culqi-checkout-form #card-cvv .tooltip {
+  left: 100%;
+  width: 260px;
+  top: -55px;
+}
+
+.clq-checkout_container #culqi-checkout-form #card-cvv:focus-within .tooltip {
+  opacity: 1;
+  visibility: visible
+}
+
+.clq-checkout_container #culqi-checkout-form #card-cvv:before {
+/*   font-family: Material Icons !important;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  color: #989898;
+  position: relative;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 5px;
+  content: "lock_outline"*/  
+  content: url(img/cvv.png)
+}
+
+.clq-checkout_container #culqi-checkout-form #user-email, .clq-checkout_container #culqi-checkout-form #cuotas{
+  margin-top: 15px;
+  border-radius: 3px
+}
+
+.clq-checkout_container #culqi-checkout-form #user-email:focus-within .tooltip {
+  opacity: 1;
+  visibility: visible
+}
+
+.clq-checkout_container #culqi-checkout-form #user-email:before {
+  /* font-family: Material Icons !important;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  color: #989898;
+  position: relative;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 5px;
+  content: "mail_outline" */  
+  content: url(img/email.png)
+}
+.clq-checkout_container #culqi-checkout-form #cuotas:before {
+  content: url(img/cuotas.svg)
+}
+
+.clq-checkout_container #culqi-checkout-form #pay-button {
+  margin-top: 15px;
+  width: 100%;
+  position: relative;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+  box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+  display: inline-block;
+  padding: 10px 25px;
+  text-align: center;
+  cursor: pointer
+}
+
+.clq-checkout_container #culqi-checkout-form #pay-button span {
+  top: -3px;
+  position: relative;
+  font: 16px/1 'Source Sans Pro', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  display: inline
+}
+
+.clq-checkout_container #culqi-checkout-form #pay-button .payText {
+  padding-left: 5px;
+  font: 23px/1 'Source Sans Pro', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.clq-checkout_container #culqi-checkout-form #pay-button .PEN:before {
+  content: "S/ "
+}
+
+.clq-checkout_container #culqi-checkout-form #pay-button .USD:before {
+  content: "$ "
+}
+
+.clq-checkout_container #culqi-checkout-form #pay-button:hover {
+  -webkit-box-shadow: none;
+  box-shadow: none
+}
+
+.clq-checkout_container #culqi-checkout-form #pay-button:active {
+  -webkit-box-shadow: inset 0 0 35px rgba(0, 0, 0, .25);
+  box-shadow: inset 0 0 35px rgba(0, 0, 0, .25)
+}
+
+.clq-checkout_container #culqi-checkout-form #pay-button:focus {
+  outline-color: transparent
+}
+
+.clq-checkout_container #culqi-checkout-form #pay-button:disabled {
+  background-image: none;
+  cursor: unset;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  filter: opacity(0.5)
+}
+
+.clq-checkout_container #culqi-checkout-form .test_key {
+  position: absolute;
+  width: 100%;
+  font-size: 10pt;
+  text-align: center;
+  color: red;
+  font-weight: 700;
+  margin-top: 7px
+}
+
+.clq-checkout_container #pay-button-mobile {
+  width: 100vw;
+  left: 0;
+  border-radius: 0;
+  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+  box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+  display: none;
+  padding: 12.5px 25px;
+  text-align: center;
+  cursor: pointer;
+  position: fixed;
+  bottom: 0;
+}
+.clq-checkout_container #pay-button-mobile span { 
+  top: -3px;
+  position: relative; 
+  font: 16px/23px 'Source Sans Pro', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  display: inline
+}
+.clq-checkout_container #pay-button-mobile .payText {
+  position: initial;
+  padding-left: 5px;
+  font: 23px/23px 'Source Sans Pro', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+.clq-checkout_container #pay-button-mobile .PEN:before {
+  content: "S/ "
+}
+.clq-checkout_container #pay-button-mobile .USD:before {
+  content: "$ "
+}
+.clq-checkout_container #pay-button-mobile:hover {
+  -webkit-box-shadow: none;
+  box-shadow: none
+}
+.clq-checkout_container #pay-button-mobile:active {
+  -webkit-box-shadow: inset 0 0 35px rgba(0, 0, 0, .25);
+  box-shadow: inset 0 0 35px rgba(0, 0, 0, .25)
+}
+.clq-checkout_container #pay-button-mobile:focus {
+  outline-color: transparent
+}
+.clq-checkout_container #pay-button-mobile:disabled {
+  background-image: none;
+  cursor: unset;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  filter: opacity(0.5)
+}
+.clq-checkout_container .circCont {
+  display: inline-block;
+  position: absolute;
+  z-index: 350;
+  right: 10px;
+  top: 10px
+}
+
+.clq-checkout_container .circCont .circle {
+  width: 30px;
+  height: 30px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+  -webkit-transition: all .3s cubic-bezier(.25, .8, .25, 1);
+  transition: all .3s cubic-bezier(.25, .8, .25, 1);
+  background: 0 0;
+  border: 0.5px solid rgba(151, 151, 151, 0.5);
+  border-radius: 30px
+}
+
+.clq-checkout_container .circCont .circle:after {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg)
+}
+
+.clq-checkout_container .circCont .circle:after,
+.clq-checkout_container .circCont .circle:before {
+  width: 13px;
+  height: 1.5px;
+  background-color: #979797;
+  content: "";
+  margin-left: -6px;
+  margin-top: -1px;
+  position: absolute;
+  border-radius: 10px;
+}
+
+.clq-checkout_container .circCont .circle:before {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg)
+}
+
+.clq-checkout_container .circCont .circle:hover {
+  -webkit-transform: scale(1.13);
+  transform: scale(1.13);
+  background: #979797;
+  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22)
+}
+
+.clq-checkout_container .circCont .circle:hover:after,
+.clq-checkout_container .circCont .circle:hover:before {
+  background-color: #fff
+}
+
+.clq-checkout_container .circCont .closed {
+  -webkit-transform: scale(3) !important;
+  transform: scale(3) !important;
+  opacity: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease
+}
+
+.clq-modal {
+  height: 100vh;
+  align-items: center;
+}
+.clq-modal .clq-checkout_container{
+  height: fit-content;  
+  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22)
+
+}
+
+.clq-init,
+.clq-modal {
+  overflow: hidden;
+}
+.clq-modal .maskpage {
+  position: absolute;
+}
+.clq-modal #culqi-checkout-form{
+  min-height: 170px;
+  height: fit-content;
+}
+@media only screen and (min-width:425px) {
+
+}
+@media only screen and (max-width:425px) {
+  .tooltip{
+    left: initial !important;
+    top: initial !important;
+    bottom: -24px;
+  }
+  #culqi-checkout-form #card-cvv .tooltip{
+    bottom: -181px;
+    right: 0;
+  }
+  .clq-checkout_container {
+    width: 100%;
+    height: calc( 100vh - 51px);
+    min-width: 280px;
+    margin: 0;
+    border-radius: 0;
+    overflow-y: auto;
+  }
+  .clq-checkout_container #culqi-checkout-form {
+  }
+  .clq-checkout_container #culqi-checkout-form #pay-button {
+    display: none
+  }
+  .clq-checkout_container #pay-button-mobile {
+    display: inline-block;
+  }
+  /* .clq-checkout_container #pay-button-mobile {
+    width: 100%;
+    position: fixed;
+    border-radius: 0;
+    -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+    box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+    display: inline-block;
+    padding: 12.5px 25px;
+    text-align: center;
+    bottom: 0;
+    cursor: pointer
+  }
+  .clq-checkout_container #pay-button-mobile span {
+    font-size: 13pt;
+    display: inline
+  }
+  .clq-checkout_container #pay-button-mobile .payText {
+    padding-left: 5px;
+    font-size: 17pt
+  }
+  .clq-checkout_container #pay-button-mobile .PEN:before {
+    content: "S/ "
+  }
+  .clq-checkout_container #pay-button-mobile .USD:before {
+    content: "$ "
+  }
+  .clq-checkout_container #pay-button-mobile:hover {
+    -webkit-box-shadow: none;
+    box-shadow: none
+  }
+  .clq-checkout_container #pay-button-mobile:active {
+    -webkit-box-shadow: inset 0 0 35px rgba(0, 0, 0, .25);
+    box-shadow: inset 0 0 35px rgba(0, 0, 0, .25)
+  }
+  .clq-checkout_container #pay-button-mobile:focus {
+    outline-color: transparent
+  }
+  .clq-checkout_container #pay-button-mobile:disabled {
+    background-image: none;
+    cursor: unset;
+    -webkit-box-shadow: none;
+    box-shadow: none
+  } */
+  .clq-modal .isIOS {
+    bottom: 25pt !important
+  }
+  .clq-modal .clq-checkout_container{
+    height: 100vh;
+  }
+}
+
+@media (max-height:429px) {
+  .clq{
+    align-items: normal;
+  }
+  .clq-checkout_container {
+    margin: 0;
+    width: 100%;
+    height: calc(100vh - 51px) !important;
+    border-radius: 0;
+    overflow-y: auto;
+  }
+  .clq-checkout_container #culqi-checkout-form {
+    overflow: hidden;
+  }
+  .clq-checkout_container #culqi-checkout-form #pay-button {
+    display: none
+  }
+  .clq-checkout_container #pay-button-mobile {
+    bottom: 0;
+    display: block;
+  }
+  .tooltip{
+    left: initial !important;
+    top: initial !important;
+    bottom: -24px;
+  }
+  #culqi-checkout-form #card-cvv .tooltip{
+    bottom: -134px;
+    right: 0;
+    width: 188px !important;
+  }
+  .clq-checkout_container #culqi-checkout-form .textBox .tooltip-img {
+    background: url(img/tarjetaExplicativo.png);
+    height: 123px;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-size: contain;
+  }
+  /* .tooltip{
+    left: initial !important;
+    top: initial !important;
+    bottom: -24px;
+    visibility: visible;
+    opacity: 1;
+  }
+  #culqi-checkout-form #card-cvv .tooltip{
+
+  }
+  .tooltip-img.visa{
+    height: 153px !important;
+    background-size: contain!important;
+  }
+  #card-cvv .tooltip{
+    left: -91px !important;
+    width: 233px !important;
+  } */
+  .clq-modal {
+    overflow-x: hidden;
+    overflow-y: auto
+  }
+  .clq-modal .isIOS {
+    bottom: 25pt !important
+  }
+  .clq-modal #culqi-checkout-form{
+    min-height: 205px;
+  }
+}
+
+@media (max-height:409px) {
+  .clq-checkout_container #pay-button-mobile {
+    /* display: none; */
+  }
+  .clq-checkout_container .isIOS {
+    display: inline !important;
+    display: initial !important
+  }
+}
+
+body {
+  margin: 0;
+  height: 100%
+}
+
+html {
+  overflow-y: hidden;
+  height: 100%;
+}

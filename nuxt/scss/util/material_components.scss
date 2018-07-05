@@ -1,0 +1,87 @@
+@mixin md-toolbar(){
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	cursor: default;
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+@mixin md-card(){
+	display: block;
+	border-radius: 2px;
+	min-width: 0;
+	position: relative;
+	text-decoration: none;
+	-webkit-box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+	box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+	> *:first-child:not(.btn) {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+  > *:last-child:not(.btn) {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+  }
+}
+
+@mixin md-container(){
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 100%;
+			flex: 1 1 100%;
+	margin: auto;
+	padding: 16px;
+	width: 100%;
+	@media only screen and (min-width: 960px) {
+		max-width: 900px;
+  }
+  @media only screen and (min-width: 1264px) {
+		max-width: 1185px;
+  }
+  @media only screen and (min-width: 1904px) {
+		max-width: 1785px;
+  }
+  @media only screen and (max-width: 599px) {
+		padding: 24px;
+  }
+}
+
+@mixin md-layout(){
+	display: inline-flex;    
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 100%;
+	flex: 1 1 100%;
+	margin: auto;
+	padding: 16px;
+	width: 100%;
+}
+
+// @mixin md-tabs-bar(){
+//     display: -webkit-box;
+//     display: -ms-flexbox;
+//     display: flex;
+// }
+// @mixin md-tabs-bar-item(){
+// 	@include md-elevation(0);
+// 	border-radius: 0px;
+// 	height: 100%;
+// 	margin: 0;
+// 	min-width: 10px;
+// 	max-width: 100px;
+// 	display: inline-flex;
+// 	display: -webkit-inline-box;
+// 	display: -ms-inline-flexbox;
+// 	padding: 6px 12px;
+// 	&__content{
+// 		padding: 0;
+// 		&::before{
+// 			opacity: 0;
+// 		}
+// 	}
+// }
