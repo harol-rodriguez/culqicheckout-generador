@@ -1,0 +1,98 @@
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="apple-touch-icon" href="https://culqi.com/images/logo.png">
+<script type="text/javascript" src="/api/js"></script>
+<div class="container">
+	<button onclick="enviarDatos()" class="btn disabled">Cargar Iframe</button>
+	<div id="checkoutContainer"></div>
+</div>
+<script>
+	// var checkout_i = null
+	var publicKey= 'pk_test_EEIucCCJGxa52Mst'
+	var settings= {
+		title: 'Harol Store',
+		currency: 'PEN',
+		description: 'descripcion Culqi',
+		amount: 39000
+	}
+	var options= {
+		lang: 'es',
+		modal: false,
+		// head:false,		
+		// onlyInputs: true,
+		style: {
+			bgcolor: '#e1e1e1',
+			maincolor: '#7847b5',
+			maintext: '#7847b5',
+			// margin: false,
+			logo: 'https://stripe.com/img/checkout/marketing/watsi.png'
+		}
+	}
+	function enviarDatos() {
+		CulqiJS.initCheckout(publicKey, settings, options)
+	    CulqiJS.openCheckout('checkoutContainer')	
+	}
+	function customBtnCheckout () {
+		var auxemail = document.getElementById('customBtnEmail').value
+		console.log('auxemail',auxemail)
+		CulqiJS.setEmail( auxemail )
+		CulqiJS.customButton() 
+	}
+	window.addEventListener('scroll', function () {
+    // Do not scroll when keyboard is visible 
+		if (document.activeElement === document.body && window.scrollY > 0) {
+			document.body.scrollTop = 0;
+		}
+	}, true);
+</script>
+<style>
+	.container {
+		background-color: rgb(146, 146, 146);
+		margin: auto;
+
+		border: none;
+		border-radius: 4px;
+
+	}
+	#checkoutContainer{
+		width: 345px;
+		height: 400px;
+	}
+	@media all and (max-width: 425px) {
+		#checkoutContainer{
+			width: 100%;
+			height: 400px;
+		}
+	}
+	input{
+	 padding: 8px;
+	}
+	.btn {
+		vertical-align: top;
+	}
+
+	.btn {
+		position: relative;
+		border: none;
+		border-radius: 4px;
+		background-color: rgb(71, 91, 181);
+		color: rgba(255, 255, 255, 1);
+		display: inline-block;
+		transition: all 100ms ease-out;
+		padding: 11px 25px;
+	}
+
+	.btn:hover, .btn:active {
+		background-color: rgb(36, 41, 89);
+	}
+
+	.btn:active {
+		box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.3);
+	}
+
+	.btn:disabled {
+		background-color: rgba(255, 255, 255, 1);
+		border: 1px solid rgba(120, 71, 181, 1);
+		color: rgba(120, 71, 181, 1);
+	}
+</style>
