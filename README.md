@@ -1,2 +1,4 @@
-# culqicheckout-generador
-Generador de código para la inegración de Culqi checkout v3
+# Generador de Culqicheckout v3
+Generador de código para la inegración de Culqi checkout v3, esté será usado para que los comercios puedan generar su código html y js de su checkout customizado
+# demo
+[DEMO generador culqiv3](https://harol-rodriguez.github.io/culqicheckout-generador)
